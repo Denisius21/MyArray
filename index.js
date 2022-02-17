@@ -25,9 +25,9 @@ function MyArrayPrototype() {
   this.map = function (func) {
     let result = new MyArray();
     for (let i = 0; i < this.length; i++) {
-      func(this[i], i, this);
+      
 
-      result.push(this[i], i, this);
+      result.push(func(this[i], i, this));
 
     } return result;
   }
@@ -38,9 +38,8 @@ const myArrayPrototype = new MyArrayPrototype();
 MyArray.prototype = myArrayPrototype;
 
 const myArray2 = new MyArray();
-/*myArray2.push('next');
-myArray2.push('more');
-myArray2.push('true');*/
+myArray2.push(5);
+myArray2.push(12);
 
 
 myArray2.forEach(callback);
@@ -48,7 +47,7 @@ function callback(value, index, arr) {
   console.log(value);
 }
 
-myArray2.map(func);
+const result = myArray2.map(func);
 function func(value, index, arr) {
-  return (value, index, arr);
+  return (value*2);
 }
