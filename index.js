@@ -56,7 +56,7 @@ function MyArrayPrototype() {
 
   }
   MyArray.isMyArray = function (arg) {
-    return arg instanceof MyArray;
+    return arg instanceof this;
   }
 }
 
