@@ -3,9 +3,12 @@ function MyArray() {
 }
 
 function MyArrayPrototype() {
-  this.push = function (value) {
-    this[this.length] = value;
-    this.length++;
+
+  this.push = function (...value) {
+    for(let i = 0; i < value.length; i++){
+      this[this.length] = value[i];
+      this.length ++;
+    }
     return this.length;
   }
   this.pop = function () {
@@ -65,11 +68,11 @@ const myArrayPrototype = new MyArrayPrototype();
 MyArray.prototype = myArrayPrototype;
 
 const myArray2 = new MyArray();
-myArray2.push(5);
+/*myArray2.push(5);
 myArray2.push(12);
 myArray2.push(9);
 myArray2.push(129);
-myArray2.push(17);
+myArray2.push(17);*/
 
 myArray2.forEach(callback);
 function callback(value, index, arr) {
